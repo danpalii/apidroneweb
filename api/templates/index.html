@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="{% url 'api:make_photos' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="submit" value="-- 1 --">
+</form>
+
+<form action="{% url 'api:make_two' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="submit" value="-- 2 --">
+</form>
+
+<form action="{% url 'api:make_three' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="submit" value="-- 3 --">
+</form>
+
+
+<div>
+    <h1>Images:</h1>
+    {% for image in images %}
+        <div>
+            <img src="media/{{ image.image }}" alt="none" style="width: 200px;"> <br>
+        </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
